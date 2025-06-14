@@ -1,0 +1,20 @@
+---
+- name: Install BIND9 DNS server
+  apt:
+    name: bind9
+    state: present
+
+- name: Copy named.conf.options template
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+
+- name: Copy zone file
+  template:
+    src: db.23367023.t301.uict.nz.j2
+    dest: /etc/bind/db.23367023.t301.uict.nz
+
+- name: Restart BIND
+  service:
+    name: bind9
+    state: restarted
