@@ -1,0 +1,7 @@
+---
+- name: Configure BIND9 DNS Master Server
+  hosts: dns-master
+  become: yes
+
+  roles:
+    - dns_master
