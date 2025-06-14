@@ -1,0 +1,12 @@
+---
+- name: Ensure SSH is installed and running
+  apt:
+    name: openssh-server
+    state: present
+    update_cache: yes
+
+- name: Enable and start SSH
+  service:
+    name: ssh
+    enabled: yes
+    state: started
