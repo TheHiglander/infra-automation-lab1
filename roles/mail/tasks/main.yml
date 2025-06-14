@@ -1,0 +1,21 @@
+---
+- name: Install Postfix and mail utilities
+  apt:
+    name:
+      - postfix
+      - mailutils
+    state: present
+
+- name: Copy main.cf for postfix
+  template:
+    src: main.cf.j2
+    dest: /etc/postfix/main.cf
+    notify: Restart postfix
+
+- name: Install Roundcube webmail (example with Apache)
+  apt:
+    name:
+      - roundcube
+      - roundcube-core
+      - roundcube-mysql
+    state: present
