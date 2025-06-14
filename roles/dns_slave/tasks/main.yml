@@ -1,0 +1,20 @@
+---
+- name: Install BIND9 for slave DNS
+  apt:
+    name: bind9
+    state: present
+
+- name: Copy named.conf.options template
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+
+- name: Copy named.conf.local with slave zone
+  template:
+    src: named.conf.local.slave.j2
+    dest: /etc/bind/named.conf.local
+
+- name: Restart BIND
+  service:
+    name: bind9
+    state: restarted
