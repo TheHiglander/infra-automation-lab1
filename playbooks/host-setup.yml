@@ -1,0 +1,27 @@
+---
+- name: Set up base system configuration
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Set hostname
+      hostname:
+        name: "{{ inventory_hostname }}"
+
+    - name: Install common packages
+      apt:
+        name:
+          - net-tools
+          - curl
+          - wget
+          - vim
+          - git
+          - sudo
+        state: present
+        update_cache: yes
+
+    - name: Ensure SSH is running
+      service:
+        name: ssh
+        state: started
+        enabled: yes
