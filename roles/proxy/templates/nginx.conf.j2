@@ -1,0 +1,17 @@
+server {
+    listen 80;
+
+    server_name otaki.{{ domain }};
+    location / {
+        proxy_pass http://backend_pool;
+    }
+
+    location /webmail {
+        proxy_pass http://localhost:8080;
+    }
+}
+
+upstream backend_pool {
+    server {{ web1_ip }} weight=4;
+    server {{ web2_ip }} weight=6;
+}
