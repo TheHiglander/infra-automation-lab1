@@ -1,0 +1,7 @@
+---
+- name: Configure NGINX Reverse Proxy for Web and Mail
+  hosts: proxy
+  become: yes
+
+  roles:
+    - proxy
