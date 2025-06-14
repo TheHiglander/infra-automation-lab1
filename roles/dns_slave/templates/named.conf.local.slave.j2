@@ -1,0 +1,5 @@
+zone "{{ domain }}" {
+    type slave;
+    masters { {{ dns_master_ip }}; };
+    file "/var/cache/bind/db.{{ domain }}";
+};
