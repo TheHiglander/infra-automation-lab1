@@ -1,0 +1,7 @@
+---
+- name: Set up Docker containerized service
+  hosts: container
+  become: yes
+
+  roles:
+    - container
