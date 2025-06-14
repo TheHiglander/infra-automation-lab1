@@ -1,0 +1,7 @@
+---
+- name: Configure Mail Server with Postfix and Webmail
+  hosts: mail
+  become: yes
+
+  roles:
+    - mail
