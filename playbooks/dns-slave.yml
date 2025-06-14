@@ -1,0 +1,7 @@
+---
+- name: Configure BIND9 DNS Slave Server
+  hosts: dns-slave
+  become: yes
+
+  roles:
+    - dns_slave
